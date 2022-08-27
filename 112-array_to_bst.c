@@ -9,25 +9,12 @@
  */
 bst_t *array_to_bst(int *array, size_t size)
 {
-	size_t x, y;
+	size_t x;
 	bst_t *bstree = NULL;
 
 	if (array == NULL)
 		return (NULL);
-	x = 0;
-	while (x < size)
-	{
-		y = 0;
-		while (y < x)
-		{
-			if (array[x] == array[y++])
-				break;
-		}
-		if (x == y)
-		{
-			if (bst_insert(&bstree, array[x++]) == NULL)
-				return (NULL);
-		}
-	}
+	for (x = 0; x < size; x++)
+		bst_insert(&bstree, array[x]);
 	return (bstree);
 }
